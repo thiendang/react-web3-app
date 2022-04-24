@@ -1,18 +1,18 @@
-import React from 'react'
-import { Web3ReactProvider } from '@web3-react/core'
-import { Web3Provider } from '@ethersproject/providers'
-import { Wallet } from './Wallet'
+import * as React from 'react';
+import {Routes, Route} from 'react-router-dom';
 
-function getLibrary(provider: any): Web3Provider {
-  const library = new Web3Provider(provider)
-  library.pollingInterval = 12000
-  return library
-}
+import Header from './Header';
+import Welcome from './Welcome';
 
-export const App = () => {
+function App() {
   return (
-    <Web3ReactProvider getLibrary={getLibrary}>
-      <Wallet />
-    </Web3ReactProvider>
-  )
+    <div>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Welcome />} />
+      </Routes>
+    </div>
+  );
 }
+
+export default App;
